@@ -22,14 +22,14 @@ def get_profile_id(profile_name: str):
 
 
 @mcp.prompt()
-def user_creation_prompt(lname: str, fname: str, email: str, profile_name: str):
+def user_creation_prompt(first_name: str, last_name: str, email: str, profile_name: str):
     """
     Prompt used to create a new user in Salesforce.
     """
-    return f"Create a new user in Salesforce with the following details: \n First Name: {fname} \n Last Name: {lname} \n Email: {email} \n Profile Name: {profile_name}"
+    return f"Create a new user in Salesforce with the following details: \n First Name: {first_name} \n Last Name: {last_name} \n Email: {email} \n Profile Name: {profile_name}"
 
 @mcp.tool()
-def create_user(lname: str, fname: str, email: str, profile_name: str):
+def create_user(first_name: str, last_name: str, email: str, profile_name: str):
     """
     Create a new user in Salesforce. Profile must be a valid Salesforce profile name:
         - Analytics Cloud Integration User
