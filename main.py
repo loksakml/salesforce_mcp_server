@@ -6,9 +6,10 @@ import json
 
 load_dotenv()
 mcp = FastMCP("salesforce-mcp")
+instance_url = os.getenv('SF_INSTANCE_URL')
 
 @mcp.tool()
-def create_user(lname: str, fname: str, username: str, email: str):
+def create_user(lname: str, fname: str, email: str):
     """
     Create a new user in Salesforce.
 
@@ -17,7 +18,8 @@ def create_user(lname: str, fname: str, username: str, email: str):
         fname: First name of the user
         email: Email of the user
     """
-    url = "https://orgfarm-a7790e458a-dev-ed.develop.my.salesforce.com/services/data/v62.0/sobjects/User"
+    #url = "https://orgfarm-a7790e458a-dev-ed.develop.my.salesforce.com/services/data/v62.0/sobjects/User"
+    url = f"{instance_url}/services/data/v62.0/sobjects/User"
     headers = {
         "Authorization": f"Bearer {os.getenv('SF_ACCESS_TOKEN')}",
         "Content-Type": "application/json"
