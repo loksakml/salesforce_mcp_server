@@ -21,6 +21,13 @@ def get_profile_id(profile_name: str):
     return response.json()['records'][0]['Id']
 
 
+@mcp.prompt()
+def user_creation_prompt(lname: str, fname: str, email: str, profile_name: str):
+    """
+    Prompt used to create a new user in Salesforce.
+    """
+    return f"Create a new user in Salesforce with the following details: \n First Name: {fname} \n Last Name: {lname} \n Email: {email} \n Profile Name: {profile_name}"
+
 @mcp.tool()
 def create_user(lname: str, fname: str, email: str, profile_name: str):
     """
